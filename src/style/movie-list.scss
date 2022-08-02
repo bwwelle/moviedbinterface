@@ -1,0 +1,65 @@
+.movie-list {
+  z-index: 1;
+  padding-top: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  &__header {
+    font-size: .8125rem;
+    font-weight: 500;
+
+    &-sort {
+      display: inline-block;
+      font-size: .8125rem;
+      font-weight: 500;
+      text-align: right;
+    }
+
+    &-sort-header {
+      font-size: .8125rem;
+      font-weight: 500;
+      text-align: right;
+      display: inline-block;
+    }
+
+    &-sort-date {
+      font-size: .8125rem;
+      font-weight: 500;
+      text-align: left;
+      display: inline-block;
+      padding-left: 10px;
+    }
+  }
+
+  &__dialog {
+    word-break: break-word;
+  }
+
+  &__row {
+    white-space: nowrap;
+  }
+
+  &__image {
+    border-radius: 10px;
+
+    &-span {
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+      width: 9em;
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+      padding: 100px 0;
+    }
+  }
+
+  &__tool-tip {
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+  }
+}

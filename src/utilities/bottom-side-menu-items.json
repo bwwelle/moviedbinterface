@@ -1,0 +1,17 @@
+[
+  {
+    "id": 7,
+    "title": "Library",
+    "href": "https://github.com/vuetifyjs/vuetify-loader"
+  },
+  {
+    "id": 8,
+    "title": "Wishlist",
+    "href": "https://github.com/vuetifyjs/vuetify"
+  },
+  {
+    "id": 9,
+    "title": "Settings",
+    "href": "https://github.com/vuetifyjs/awesome-vuetify"
+  }
+]

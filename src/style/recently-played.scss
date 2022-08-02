@@ -1,0 +1,41 @@
+.recently-played {
+  background: white;
+  padding-right: 3px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+
+  &__header {
+    font-size: .8125rem;
+    font-weight: 500;
+  }
+
+  &__col {
+    &-image {
+      border-radius: 10px;
+
+      &__not-playing {
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        /* msie */
+      }
+
+      &__span {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        bottom: 15px;
+        padding-left: 20px;
+      }
+    }
+  }
+
+  &__divider-container {
+    padding: 0px 20px 0px 0px;
+
+    &-divider {
+      border-width: .5px !important;
+      border-color: grey;
+      margin: 20px 11px 20px 0px;
+    }
+  }
+}

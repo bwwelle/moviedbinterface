@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "title": "Movies",
+    "href": "https://github.com/vuetifyjs/vuetify-loader"
+  },
+  {
+    "id": 1,
+    "title": "TV Shows",
+    "href": "https://github.com/vuetifyjs/vuetify"
+  },
+  {
+    "id": 2,
+    "title": "Music",
+    "href": "https://github.com/vuetifyjs/awesome-vuetify"
+  },
+  {
+    "id": 3,
+    "title": "Audiobooks",
+    "href": "https://github.com/vuetifyjs/awesome-vuetify"
+  },
+  {
+    "id": 4,
+    "title": "Games",
+    "href": "https://github.com/vuetifyjs/awesome-vuetify"
+  },
+  {
+    "id": 5,
+    "title": "Apps",
+    "href": "https://github.com/vuetifyjs/awesome-vuetify"
+  },
+  {
+    "id": 6,
+    "title": "Updates",
+    "href": "https://github.com/vuetifyjs/awesome-vuetify"
+  }
+]

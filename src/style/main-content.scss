@@ -1,0 +1,42 @@
+.main-content {
+  background: white;
+  padding: 0px;
+  border-radius: 0px 20px 20px 0px;
+  max-height: 900px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  &__menu {
+    margin: auto auto;
+    padding: 12px 12px 0px 12px;
+    overflow-y: none;
+    height: 85px;
+  }
+
+  &__movies {
+    margin: auto auto;
+    padding: 0;
+    max-height: 720px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &__blur {
+    position: relative;
+    z-index: 10;
+    margin-top: -45px;
+    content: ' ';
+    height: 40px;
+    background: linear-gradient(to bottom,
+        rgba(241, 238, 238, .1),
+        rgb(253, 252, 252) 80%);
+  }
+
+  &__hide-blur {
+    position: relative;
+    z-index: -1;
+    margin-top: -45px;
+    content: ' ';
+    height: 40px;
+  }
+}

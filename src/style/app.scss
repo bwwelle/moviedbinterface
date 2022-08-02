@@ -1,0 +1,11 @@
+#app {
+  background: url('@/assets/waves-background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+html {
+  overflow-y: auto !important;
+}

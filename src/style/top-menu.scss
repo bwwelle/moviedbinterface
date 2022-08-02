@@ -1,0 +1,54 @@
+.top-menu {
+  padding-left: 0px;
+  padding-bottom: 0px;
+
+  &__row {
+    margin-left: 0px;
+  }
+
+  &__filter {
+    white-space: nowrap;
+    padding: 0px;
+
+    &-dropdown {
+      display: inline-block;
+      font-size: .8125rem;
+      max-width: 125px;
+
+      &__span {
+        font-size: 12px;
+        float: left;
+        clear: left;
+      }
+    }
+  }
+
+  &__input-container {
+    padding-top: 10px;
+
+    &-input {
+      font-size: .8125rem;
+
+      ::v-deep input {
+        text-align: center;
+      }
+
+      ::v-deep i {
+        font-size: .8125rem;
+      }
+    }
+  }
+
+  &__movie-player {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+
+    font-size: .8125rem;
+    padding-top: 5px;
+    text-align: right;
+  }
+
+  &__control-button {
+    padding: 0px 5px 0px 5px;
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "name": "movieinterface",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "jest --coverage --no-cache"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.10",
+    "axios": "^0.27.2",
+    "browser-resolve": "^2.0.0",
+    "core-js": "^3.8.3",
+    "jest-vue-preprocessor": "^1.7.1",
+    "sass-loader": "^13.0.2",
+    "typescript": "^4.7.4",
+    "vue": "^2.7.5",
+    "vue-axios": "^3.4.1",
+    "vuetify": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.12.16",
+    "@mdi/font": "^7.0.96",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^1.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^8.0.3",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
+    "jest-serializer-vue": "^2.0.2",
+    "prettier": "^2.5.1",
+    "sass": "~1.32.0",
+    "sass-loader": "^10.0.0",
+    "vue-cli-plugin-vuetify": "~2.5.1",
+    "vue-jest": "^3.0.7",
+    "vue-template-compiler": "^2.7.8",
+    "vuetify-loader": "^1.7.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>src/test/test-env.js"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>src/$1",
+      "^~/(.*)$": "<rootDir>src/$1"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+    },
+    "testEnvironment": "jest-environment-jsdom",
+    "coveragePathIgnorePatterns": [
+      "services"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@vue/cli-plugin-babel/preset"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
