@@ -8,16 +8,12 @@ const context = {
   'vote_count.gte': 2,
   page: 1,
   with_original_language: 'en',
-  'primary_release_date.lte': new Date()
-    .toJSON()
-    .slice(0, 10)
-    .replace(/-/g, '-'),
   watch_region: 'US'
 }
 
 describe('Api Data Utils tests', () => {
   test('Should format correctly for a query to the API', () => {
-    const output = `?api_key=undefined&language=en-US&region=US&certification_country=US&vote_count.gte=2&page=1&with_original_language=en&primary_release_date.lte=2022-08-02&watch_region=US`
+    const output = `?api_key=undefined&language=en-US&region=US&certification_country=US&vote_count.gte=2&page=1&with_original_language=en&watch_region=US`
 
     expect(generateQuery(context)).toEqual(output);
   })

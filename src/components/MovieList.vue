@@ -70,7 +70,7 @@
 				class="movie-list__col"
 				no-gutters
 			>
-				<v-tooltip bottom>
+				<v-tooltip top>
 					<template v-slot:activator="{ on, attrs }">
 						<v-img
 							v-if="movie.backdropPath"
@@ -165,7 +165,7 @@ export default {
 			currentYear: new Date().getFullYear(),
 			totalPageButtonsVisible: 7,
 			currentPage: 1,
-			sortBy: 'primary_release_date.desc',
+			sortBy: 'primary_release_date.desc,title.desc',
 			totalPageCount: 20,
 			movies: [],
 			titleSortAscendingToggle: true,

@@ -133,6 +133,107 @@ describe('MainContent create', () => {
     expect(wrapper.vm.showBlur).toEqual(true)
   })
 
+  test('Should hide the blur div at the bottom of the component when calling fetchMovieList', async () => {
+    const successfulMockResponse = {
+      success: true,
+      data: {
+        results: [{
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }, {
+          poster_path: null,
+          original_title: '',
+          release_date: '',
+          genre_ids: [35]
+        }], total_pages: 200
+      }
+    }
+    Object.defineProperties(mainContent, {
+      offsetHeight: { value: 100 },
+      scrollTop: { value: 100, writable: true },
+      scrollHeight: { value: 5000 }
+    })
+
+    DiscoverService.getMovie = jest
+      .fn()
+      .mockResolvedValue(successfulMockResponse)
+
+    await wrapper.vm.fetchMovieList(50, 'primary_release_date.desc')
+    expect(DiscoverService.getMovie).toHaveBeenCalled()
+  })
+
   test('Should call genreChanged', () => {
     wrapper.vm.refreshMovieList = 1;
     wrapper.vm.genreChanged([90])

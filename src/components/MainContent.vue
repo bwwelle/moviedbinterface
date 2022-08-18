@@ -5,12 +5,16 @@
 		</v-container>
 		<v-container class="main-content__movies">
 			<v-row no-gutters>
-				<v-col cols="12">
+				<v-col>
 					<RecentlyPlayed />
 					<MovieList
+						v-if="showMovieList"
 						:movie-list-call="fetchMovieList"
 						:key="refreshMovieList"
 					/>
+					<v-container v-else class="pt-10 main-content__movies-message">
+						No Movies Available For Filter Selected
+					</v-container>
 				</v-col>
 			</v-row>
 		</v-container>
@@ -34,35 +38,37 @@ export default {
 	},
 	data() {
 		return {
+			showMovieList: false,
 			genreList: genres,
 			selectedGenre: [16],
 			showBlur: true,
-			movieListDataCall: this.fetchMovieList(1),
+			movieListDataCall: this.fetchMovieList(),
 			movieImageURL: 'https://image.tmdb.org/t/p/w300',
 			refreshMovieList: 0
 		}
 	},
 	created() {
-		const _this = this
-
 		window.addEventListener(
 			'scroll',
 			() => {
-				const myDiv = document.getElementsByClassName('main-content__movies')[0]
-				if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight - 50) {
-					_this.showBlur = false
-				} else {
-					_this.showBlur = true
-				}
+				this.showBlur = !this.scrolledToBottom()
 			},
 			true
 		)
 	},
 	methods: {
-		async fetchMovieList(requestedPage, sortBy) {
-			const _this = this
-			let returnedMovies = null
+		async fetchMovieList(
+			requestedPage = 1,
+			sortBy = 'primary_release_date.desc,title.desc'
+		) {
 			let totalPageCount = 0
+			let mainContentDiv = document.getElementsByClassName(
+				'main-content__movies'
+			)[0]
+
+			if (mainContentDiv) {
+				mainContentDiv.scrollTop = 0
+			}
 
 			return await DiscoverService.getMovie({
 				region: 'US',
@@ -76,49 +82,19 @@ export default {
 					.replace(/-/g, '-'),
 				sort_by: sortBy,
 				watch_region: 'US',
-				with_genres: _this.selectedGenre
+				with_genres: this.selectedGenre
 			}).then(response => {
 				if (response.success) {
+					let movies = this.createMoviesArray(response.data.results)
 					totalPageCount =
 						response.data.total_pages > 500 ? 500 : response.data.total_pages
 
-					returnedMovies = response.data.results.map(item => {
-						return {
-							backdropPath: item.poster_path
-								? `${_this.movieImageURL}${item.poster_path}`
-								: item.poster_path,
-							title: item.original_title,
-							releaseDate: new Date(item.release_date).getFullYear(),
-							genre: _this.genreList
-								.filter(({ value }) => item.genre_ids.includes(value))
-								.map(genre => genre.text)
-								.join(' | '),
-							description: item.overview
-						}
-					})
-
-					let newMovieArray = []
-					let newArray = []
-					let count = 0
-
-					for (var i = 0; i < returnedMovies.length; i++) {
-						if (count == 5) {
-							newMovieArray.push(newArray)
-							newArray = [returnedMovies[i]]
-							count = 1
-						} else {
-							newArray.push(returnedMovies[i])
-							count++
-						}
-					}
-
-					if (count > 1) {
-						newMovieArray.push(newArray)
-					}
+					this.showBlur = movies.length === 4 && mainContentDiv ? true : false
+					this.showMovieList = totalPageCount > 0
 
 					return {
 						totalPageCount: totalPageCount,
-						data: newMovieArray,
+						data: movies,
 						success: true
 					}
 				} else {
@@ -126,8 +102,62 @@ export default {
 				}
 			})
 		},
+		scrolledToBottom() {
+			let mainContentDiv = document.getElementsByClassName(
+				'main-content__movies'
+			)[0]
+			const divBottomPadding = 50
+
+			return (
+				mainContentDiv.scrollTop > 0 &&
+				mainContentDiv.offsetHeight + mainContentDiv.scrollTop >=
+					mainContentDiv.scrollHeight - divBottomPadding
+			)
+		},
+		createMoviesArray(data) {
+			return this.moviesIntoRows(
+				data.map(item => {
+					return {
+						backdropPath: item.poster_path
+							? `${this.movieImageURL}${item.poster_path}`
+							: item.poster_path,
+						title: item.original_title,
+						releaseDate: new Date(item.release_date).getFullYear(),
+						genre: this.genreList
+							.filter(({ value }) => item.genre_ids.includes(value))
+							.map(genre => genre.text)
+							.join(' | '),
+						description: item.overview
+					}
+				})
+			)
+		},
+		moviesIntoRows(movies) {
+			let newMovieArray = []
+			let newArray = []
+			let count = 0
+
+			for (var i = 0; i < movies.length; i++) {
+				if (count == 5) {
+					newMovieArray.push(newArray)
+					newArray = [movies[i]]
+					count = 1
+				} else {
+					newArray.push(movies[i])
+					count++
+				}
+			}
+
+			if (count > 0 && count <= 5) {
+				newMovieArray.push(newArray)
+			}
+
+			return newMovieArray
+		},
 		genreChanged(newGenre) {
 			this.selectedGenre = newGenre
+
+			this.showMovieList = true
 
 			this.refreshMovieList++
 		}

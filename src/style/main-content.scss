@@ -2,7 +2,7 @@
   background: white;
   padding: 0px;
   border-radius: 0px 20px 20px 0px;
-  max-height: 900px;
+  height: 800px;
   overflow-x: hidden;
   overflow-y: hidden;
 
@@ -17,8 +17,12 @@
     margin: auto auto;
     padding: 0;
     max-height: 720px;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
+
+    &-message {
+      text-align: center;
+    }
   }
 
   &__blur {
